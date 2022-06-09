@@ -1,0 +1,133 @@
+@import "./_mixin.scss";
+@import "./_media.scss";
+@import "./_color.scss";
+
+#auto-complete {
+  float: left;
+  width: 100%;
+
+  &.short {
+    @include respond-to(sm) {
+      width: 80%;
+    }
+  }
+
+  .auto-complete-box {
+    position: relative;
+    width: 100%;
+
+    .input-right-text {
+      border-radius: 0 50px 50px 0;
+      float: left;
+      width: 10%;
+      background: #fff;
+      border: 1px solid #eee;
+      border-left: 0;
+      height: 34px;
+      line-height: 30px;
+      position: relative;
+      top:0;
+      right: 0;
+      cursor: pointer;
+      @include transition(all .2s);
+
+      &:hover {
+        color: #fff;
+        background: $point-color;
+      }
+
+      i {
+        margin: 0 0 0 -5px;
+      }
+    }
+
+    .auto-complate-open {
+      position: absolute;
+      width: 100%;
+      max-height: 330px;
+      margin: 5px 0 0;
+      border-radius: 6px;
+      background: #fff;
+      z-index: 11;
+      overflow-y: auto;
+      box-shadow: 0 6px 16px -2px rgba(0,0,0,0.1);
+
+      ul {
+        display: block;
+        margin: 0;
+
+        li {
+          display: block;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          word-wrap: normal;
+          padding: 10px;
+          margin: 0;
+          border-top: 1px solid $gray-line;
+          cursor: pointer;
+          @include transition(all .2s);
+
+
+          &.isIcon {
+            padding: 10px 10px 10px 36px;
+          }
+
+          &:first-child {
+            border: none;
+          }
+
+          &:hover {
+            color: $point-color;
+          }
+
+          &.selected {
+            color: $point-color;
+          }
+
+          img {
+            &.google-logo, &.tradlinx-symbol {
+              position: absolute;
+              width: 15px;
+              left: 15px;
+              top: 50%;
+              transform: translateY(-50%);
+              margin: -1px 0 0;
+            }
+
+            &.tradlinx-symbol {
+              width: 14px;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .auto-input {
+      &:hover {
+        + i {
+          &.ri-search-line {
+            color: #222;
+          }
+        }
+      }
+    }
+
+    i {
+      &.ri-search-line {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: $gray-text;
+        cursor: pointer;
+        @include transition(all .2s);
+
+        &:hover {
+          color: $point-color;
+        }
+      }
+    }
+  }
+}
+
